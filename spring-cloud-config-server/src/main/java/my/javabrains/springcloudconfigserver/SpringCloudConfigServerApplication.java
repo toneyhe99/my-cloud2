@@ -12,8 +12,8 @@ import org.springframework.cloud.config.server.EnableConfigServer;
              add @EnableConfigServer annotation on main class
              set config server git repository uri property (local or remote):
                      spring.cloud.config.server.git.uri = file:///C:/tmp/my-git-repo
-                     #spring.cloud.config.server.git.uri = https://github.com/toneyhe99/my-spring-cloud-config-server.git
-             Finally put your config file into C:/tmp/my-git-repo folder :
+                     #spring.cloud.config.server.git.uri = https://github.com/toneyhe99/my-cloud2.git
+             Finally put your config file into local C:/tmp/my-git-repo folder (or into remote repository's ROOT FOLDER!):
                      application.properties
                      catalog-service-dev.properties
                      catalog-service-qa.properties
