@@ -19,8 +19,8 @@ import org.springframework.cloud.config.server.EnableConfigServer;
                      catalog-service-qa.properties
                      catalog-service.properties
 
-             Now start the server and goto test the syntax:
-                     http://localhost:8888/<file-name>/<profile-name>
+             Now start the server and goto test the syntax (label is repository branch name, optional, default to master branch):
+                     http://localhost:8888/<file-name>/<profile-name>/<label>
              Sample for this url:
                      http://localhost:8888/catalog-service/qa
              this will load the general default file "application.properties" first,
@@ -38,6 +38,15 @@ import org.springframework.cloud.config.server.EnableConfigServer;
                      spring.application.name=catalog-service    //default to "application" property file
                      spring.cloud.config.profile=qa             //default to "default" profile
                      spring.cloud.config.label=master           //default to master branch
+
+ Make Microservice configuration dynamically refresh when config server data changes without restart
+     1). add "spring-boot-starter-actuator" dependency
+         add property "management.endpoints.web.exposure.include=health, info, refresh" to enable actuator's these endpoint.
+     2). add @RefreshScope annotation on the Component that need dynamically refresh its external loaded properties (like @Value fields)
+    Your are done! To refresh after started Microservice, just call this microservice uri:
+        "http://localhost:port/actuator/refresh"  then it will refresh the @RefreshScope noted Component loaded properties at once!
+
+ Note: this window 10 not support add branch in config server, only master branch allow, or it will auto switch to master during deployment!
  */
 @SpringBootApplication
 @EnableConfigServer

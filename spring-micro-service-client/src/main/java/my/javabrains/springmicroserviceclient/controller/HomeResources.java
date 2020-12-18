@@ -2,6 +2,7 @@ package my.javabrains.springmicroserviceclient.controller;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +15,7 @@ import javax.annotation.PostConstruct;
  * should show loaded properties if call uri :  "localhost:8088/properties/show",
  */
 @Data
+@RefreshScope
 @RestController
 @RequestMapping("/properties")
 public class HomeResources {
