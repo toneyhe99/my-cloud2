@@ -46,6 +46,9 @@ import org.springframework.cloud.config.server.EnableConfigServer;
     Your are done! To refresh after started Microservice, just call this microservice uri:
         "http://localhost:port/actuator/refresh"  then it will refresh the @RefreshScope noted Component loaded properties at once!
 
+    Note: you must commit your property file change and PUSH to remote repository, as the "refresh" action only load from
+          remote repository and auto pull into local, even you linked locally, so your local change WILL BE overridden!
+
  Note: this window 10 not support add branch in config server, only master branch allow, or it will auto switch to master during deployment!
  */
 @SpringBootApplication
